@@ -3,6 +3,10 @@ public class Status
     private int health;
     private int protection;
     private int power;
+    private boolean action;
+    private int actionTimer;
+    private boolean visible;
+    private int visibleTimer;
 
     public Status(String _statusInput)
     {
