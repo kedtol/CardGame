@@ -5,6 +5,7 @@ public class Player extends GameObject
     private Status status;
     public int roundOrder;
     private int selectedCard;
+    public boolean alive = true;
 
     public Player(int _roundOrder)
     {
