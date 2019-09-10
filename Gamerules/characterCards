@@ -1,0 +1,17 @@
+#character cards for the card_idea project
+start-
+name teszt
+health 5
+protection 0
+power 1
+drawdeck normal
+deckcap 5
+end-
+start-
+name dog
+health 3
+protection 2
+power 0
+drawdeck player
+deckcap 3
+end-

@@ -1,0 +1,68 @@
+#normal cards for the card_idea project
+start-
+name healthkit
+amount 10
+health 1
+protection 0
+power 0
+action 0
+actiontimer 0
+visible 0
+visibletimer 0
+statustarget self
+draw 0
+drawtarget null
+steal 1
+passive 0
+end-
+#
+start-
+name bang
+amount 15
+health 0
+protection 0
+power 1
+action 0
+actiontimer 0
+visible 0
+visibletimer 0
+statustarget player
+draw 0
+drawtarget null
+steal 1
+passive 0
+end-
+#
+start-
+amount 15
+name-dodge
+health 0
+protection 1
+power 0
+action 0
+actiontimer 0
+visible 0
+visibletimer 0
+statustarget self
+draw 0
+drawtarget null
+steal 1
+passive 0
+end-
+#
+start-
+name barrel
+amount 2
+health 0
+protection 1
+power 0
+action 0
+actiontimer 0
+visible 0
+visibletimer 0
+statustarget self
+draw 0
+drawtarget null
+steal 1
+passive 0
+end-
