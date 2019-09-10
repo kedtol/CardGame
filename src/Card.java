@@ -1,8 +1,15 @@
+import java.io.StringReader;
+
 public class Card
 {
     protected Status status;
     protected boolean passive = false;
     protected boolean stealable = true;
+    private String target;
+    private boolean drawCard;
+    private GameObject drawTarget;
+    protected String name;
+    public int amount;
 
     public Card(boolean character)
     {
