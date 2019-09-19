@@ -34,8 +34,8 @@ passive 0
 end-
 #
 start-
+name dodge
 amount 15
-name-dodge
 health 0
 protection 1
 power 0
