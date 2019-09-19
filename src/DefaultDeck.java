@@ -1,12 +1,14 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class DefaultDeck
 {
-    public Card[] defaultCards;
-    public CharacterCard[] defaultCharacterCards;
+    public ArrayList<Card> defaultCards = new ArrayList<Card>();
+    public ArrayList<CharacterCard> defaultCharacterCards;
     private boolean cardReading = false;
     private int readingState = 0;
     private Card readingCard;
+
     public boolean loadDeckFromFile()
     {
         try
@@ -22,8 +24,9 @@ public class DefaultDeck
                 readLine = br.readLine();
                 normalDeckLoader(readLine);
             }
-            while(!readLine.equals(null));
-
+            while(readLine != null);
+            System.out.println("Default deck loaded!");
+            System.out.println("There are "+defaultCards.size()+" normal cards!");
             return true;
         }
         catch (IOException e)
@@ -35,19 +38,27 @@ public class DefaultDeck
 
     private void normalDeckLoader(String _readLine)
     {
+        if (_readLine == null)
+        {
+            return;
+        }
+
         if (_readLine.equals("start-") && cardReading == false)
         {
             cardReading = true;
+            readingCard = new Card(false);
             readingState = 0;
+            return;
         }
 
         if (cardReading == true)
         {
+
+
             if (readingState == 0)
             {
                 if (_readLine.startsWith("name "))
                 {
-                    readingCard = new Card(false);
                     readingCard.name = _readLine.substring(4);
                 }
                 else
@@ -61,8 +72,7 @@ public class DefaultDeck
             {
                 if (_readLine.startsWith("amount "))
                 {
-                    readingCard = new Card(false);
-                    readingCard.amount = Integer.parseInt(_readLine.substring(6));
+                    readingCard.amount = Integer.parseInt(_readLine.substring(7));
                 }
                 else
                 {
@@ -71,7 +81,15 @@ public class DefaultDeck
                     cardReading = false;
                 }
             }
+
             readingState ++;
+        }
+
+        if (_readLine.equals("end-") && cardReading == true)
+        {
+            defaultCards.add(readingCard);
+            readingState = 0;
+            cardReading = false;
         }
 
     }
