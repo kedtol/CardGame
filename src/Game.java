@@ -2,16 +2,16 @@ import java.io.*;
 
 public class Game
 {
-    private boolean quit;
     private int round = 0;
     private int roundPlayer = 0;
     private int maxPlayers;
     private Player[] playerList;
-
+    private boolean quit = false;
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public SimpleDeck simpleDeck = new SimpleDeck();
+    private DefaultDeck defaultDeck = new DefaultDeck();
 
     public Game(int _maxPlayers)
     {
@@ -36,15 +36,22 @@ public class Game
 
     private void start()
     {
-        resetPlayerList();
+        loadDefaultDeck();
         resetSimpleDeck();
-        quit = false;
+        System.out.println("Game started");
         while (!quit)
         {
-            System.out.println("Round started");
-            System.out.println("Player"+roundPlayer+" starts!");
-            playerInteraction();
-            System.out.println("Player"+roundPlayer+" finished!");
+            if (roundPlayer == 0)
+            {
+                System.out.println("Round started");
+            }
+
+            playerRound();
+
+            if (roundPlayer == maxPlayers-1)
+            {
+                System.out.println("Round finished");
+            }
         }
     }
 
@@ -64,29 +71,48 @@ public class Game
 
     private void resetSimpleDeck()
     {
-
+        simpleDeck.generate();
     }
 
     private void loadDefaultDeck()
     {
-
-
+        if (defaultDeck.loadDeckFromFile() == false)
+        {
+            quit = true;
+        }
     }
 
-    private void playerInteraction()
+    private void playerRound()
     {
+        System.out.println("Player"+roundPlayer+" starts!");
+
         String command;
         System.out.println("Type 'end' to end your round.");
         //playerList[roundPlayer].draw
         command = consoleRead();
 
-        while (command.equals("end"))
+        while (!command.equals("end"))
         {
-
-
+            playerInteraction(command);
             command = consoleRead();
         }
 
+        System.out.println("Player"+roundPlayer+" finished!");
+
+        if (roundPlayer < maxPlayers-1)
+        {
+            roundPlayer += 1;
+        }
+        else
+        {
+            roundPlayer = 0;
+        }
     }
+
+   private void playerInteraction(String _command)
+   {
+       // if (_command.equals())
+   }
+
 }
 
