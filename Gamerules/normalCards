@@ -1,14 +1,8 @@
 #normal cards for the card_idea project
 start-
 name healthkit
-amount 10
+amount 8
 health 1
-protection 0
-power 0
-action 0
-actiontimer 0
-visible 0
-visibletimer 0
 statustarget self
 draw 0
 drawtarget null
@@ -35,7 +29,7 @@ end-
 #
 start-
 name dodge
-amount 15
+amount 10
 health 0
 protection 1
 power 0
