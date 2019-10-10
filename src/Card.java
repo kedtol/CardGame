@@ -5,9 +5,9 @@ public class Card
     protected Status status;
     protected boolean passive = false;
     protected boolean stealable = true;
-    private String target;
-    private boolean drawCard;
-    private GameObject drawTarget;
+    public String target;
+    public boolean drawCard;
+    public String drawTarget;
     protected String name;
     public int amount;
 
