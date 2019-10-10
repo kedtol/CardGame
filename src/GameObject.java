@@ -1,6 +1,6 @@
 public abstract class GameObject
 {
-    public Deck deck;
+    public Deck deck = new Deck();
 
     private void draw()
     {
