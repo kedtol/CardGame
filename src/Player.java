@@ -34,7 +34,7 @@ public class Player extends GameObject
 
     public void drawCard(GameObject target) //draws a card from a deck
     {
-        if (target.deck.checkEmpty() == false)
+        if (!target.deck.checkEmpty())
         {
             deck.add(target.deck.remove());
         }
