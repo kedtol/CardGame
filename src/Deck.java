@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck
 {
@@ -8,6 +9,16 @@ public class Deck
     public Deck()
     {
         cards = new ArrayList<Card>(deckCapacity);
+
+        for (int i = 0; i < deckCapacity; i++)
+        {
+            cards.add(null);
+        }
+    }
+
+    public void addDeckCapacity(int amount)
+    {
+        deckCapacity += amount;
     }
 
     public void add(Card _card) //gives a card to the deck
@@ -16,8 +27,15 @@ public class Deck
         {
             if (cards.get(i) == null)
             {
-                cards.set(i,_card);
+                cards.set(i, _card);
+                return;
             }
+        }
+
+        if (cards.size() != deckCapacity)
+        {
+            cards.add(_card);
+            return;
         }
     }
 
@@ -52,7 +70,7 @@ public class Deck
     {
         for (int i = 0; i < cards.size();i++)
         {
-            if (cards.get(i) == null)
+            if (cards.get(i) != null)
             {
                 Card card_ = cards.get(i);
                 cards.set(i,null);
@@ -65,7 +83,7 @@ public class Deck
 
     public Card check(int _index) //what card is at _index?
     {
-        if (_index < cards.size() && _index > 0)
+        if (_index < cards.size() && _index >= 0)
         {
             return cards.get(_index);
         }
@@ -82,6 +100,12 @@ public class Deck
                 return true;
             }
         }
+
+        if (cards.size() < deckCapacity)
+        {
+            return true;
+        }
+
         return false;
     }
 
@@ -94,6 +118,12 @@ public class Deck
                 return false;
             }
         }
+
+        if (cards.size() < deckCapacity)
+        {
+            return false;
+        }
+
         return true;
     }
 
@@ -130,7 +160,37 @@ public class Deck
 
     public void shuffle() //shuffles the deck
     {
+        Collections.shuffle(cards);
+    }
 
+    public String[] listCardNames()
+    {
+        String[] names_;
+
+        if (cards.size() > 0)
+        {
+            names_ = new String[deckCapacity];
+
+
+            for (int i = 0; i < cards.size(); i++)
+            {
+                if (cards.get(i) == null)
+                {
+                    names_[i] = i+" -empty-";
+                }
+                else
+                {
+                    names_[i] = i+" "+cards.get(i).name;
+                }
+            }
+        }
+        else
+        {
+            names_ = new String[1];
+            names_[0] = "Your deck is empty.";
+        }
+
+        return names_;
     }
 
 }
