@@ -81,6 +81,35 @@ public class DefaultDeck
                     cardReading = false;
                 }
             }
+            if (readingState > 1)
+            {
+
+
+                if (_readLine.startsWith("health "))
+                {
+                    readingCard.status.health = Integer.parseInt(_readLine.substring(7));
+                }
+
+                if (_readLine.startsWith("power "))
+                {
+                    readingCard.status.power = Integer.parseInt(_readLine.substring(6));
+                }
+
+                if (_readLine.startsWith("protection "))
+                {
+                    readingCard.status.protection = Integer.parseInt(_readLine.substring(11));
+                }
+
+                if (_readLine.startsWith("statustarget "))
+                {
+                    readingCard.target = _readLine.substring(13);
+                }
+
+                if (_readLine.startsWith("drawtarget "))
+                {
+                    readingCard.drawTarget = _readLine.substring(11);
+                }
+            }
 
             readingState ++;
         }
